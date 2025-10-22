@@ -1,0 +1,25 @@
+# Core libraries
+python>=3.10
+pandas>=2.0
+numpy>=1.25
+requests>=2.31
+
+# Bioinformatics
+biopython>=1.82
+pymed>=0.4.0
+
+# Hugging Face / NLP
+sentence-transformers>=2.2.2
+transformers>=4.44.0
+datasets>=2.16.0
+
+# Retrieval / RAG
+faiss-cpu>=1.7.4
+sqlite-utils>=3.38.0
+
+# LLM / Ollama integration
+ollama>=0.0.1  # adjust to the version you have installed
+langchain>=0.1.0
+
+# Optional utilities
+tqdm>=4.66
