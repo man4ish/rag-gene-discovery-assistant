@@ -111,9 +111,3 @@ Open `notebooks/RAG_GeneDiscovery_Assistant.ipynb` to see example queries and ou
 
 **Manish Kumar**
 Senior Bioinformatics Software Developer | AI Researcher | Data Science Enthusiast
-
-```
-
-
-Do you want me to do that?
-```
