@@ -14,16 +14,24 @@ import argparse
 import numpy as np
 import faiss
 import ollama
-from config import ABSTRACT_FOLDER, INDEX_FILE, ID_MAP_FILE, MODEL_NAME, TOP_K
-from structured_drug_kg import add_structured_data_to_kg  # Neo4j module
+from config import (
+    ABSTRACT_FOLDER,
+    INDEX_FILE,
+    ID_MAP_FILE,
+    MODEL_NAME,   # Using only MODEL_NAME from config (embedding model)
+    TOP_K,
+)
+from src.structured_drug_kg import add_structured_data_to_kg
+
 
 # ------------------------------------------------------------
 # RAG Assistant Class
 # ------------------------------------------------------------
 class RAGAssistant:
-    def __init__(self, abstract_folder=ABSTRACT_FOLDER, model_name=MODEL_NAME, output_dir="output"):
+    def __init__(self, abstract_folder=ABSTRACT_FOLDER, embed_model=MODEL_NAME, output_dir="output"):
         self.abstract_folder = abstract_folder
-        self.model_name = model_name
+        self.embed_model = embed_model
+        self.chat_model = "deepseek-r1:latest"  # Hardcoded chat model
         self.output_dir = output_dir
         os.makedirs(self.output_dir, exist_ok=True)
 
@@ -46,7 +54,7 @@ class RAGAssistant:
             f"Answer the following question using the context below.\n\n"
             f"Question: {user_query}\n\nContext:\n{context[:10000]}"
         )
-        response = ollama.chat(model=self.model_name, messages=[{"role": "user", "content": prompt}])
+        response = ollama.chat(model=self.chat_model, messages=[{"role": "user", "content": prompt}])
         return getattr(response, "message", str(response))
 
     # ---------------------------
@@ -56,13 +64,12 @@ class RAGAssistant:
         prompt = f"""
         Extract structured drug-target-cancer information for '{drug_name}':
         {abstract}
-        Format as JSON: [{{'drug': str, 'targets': [{{'target': str, 'cancer': str, 'mechanism': str}}]}}]
+        Format as JSON: [{{"drug": str, "targets": [{{"target": str, "cancer": str, "mechanism": str}}]}}]
         """
-        response = ollama.chat(model=self.model_name, messages=[{"role": "user", "content": prompt}])
+        response = ollama.chat(model=self.chat_model, messages=[{"role": "user", "content": prompt}])
         text = getattr(response, "message", str(response))
         try:
             parsed = json.loads(text)
-            # Ensure list format
             return parsed if isinstance(parsed, list) else [parsed]
         except Exception:
             return []
@@ -82,7 +89,7 @@ class RAGAssistant:
         return index, pmid_map
 
     def get_embedding(self, text: str):
-        result = ollama.embeddings(model=self.model_name, prompt=text)
+        result = ollama.embeddings(model=self.embed_model, prompt=text)
         return np.array(result["embedding"], dtype="float32")
 
     def retrieve_top_pmids(self, query: str, index, pmid_map, top_k: int = TOP_K):
@@ -96,20 +103,17 @@ class RAGAssistant:
     # Output Saving
     # ---------------------------
     def save_output(self, query, summary, top_pmids, structured_results=None):
-        # Save text summary
         summary_file = os.path.join(self.output_dir, "rag_demo_results.txt")
         with open(summary_file, "a", encoding="utf-8") as f:
             f.write(f"Query: {query}\n")
             f.write(f"PMIDs: {', '.join(top_pmids)}\n")
             f.write(f"Summary: {summary}\n\n")
 
-        # Save structured results (always create JSON, even if empty)
         structured_file = os.path.join(self.output_dir, "sample_answers.json")
         with open(structured_file, "w", encoding="utf-8") as f:
             json.dump(structured_results if structured_results else [], f, indent=2)
 
         print(f"Results saved to: {self.output_dir}")
-
 
     # ---------------------------
     # Full Pipeline
@@ -126,15 +130,13 @@ class RAGAssistant:
 
         structured_results = []
         if structured:
-            for i, pmid in enumerate(top_pmids):
+            for pmid in top_pmids:
                 abstract = self.get_abstract_text(pmid)
                 structured_entries = self.extract_structured_info(query, abstract)
-                # Add PMID mapping
                 for entry in structured_entries:
                     entry["pmid"] = pmid
                 structured_results.extend(structured_entries)
 
-            # Add structured data to Neo4j
             if structured_results:
                 add_structured_data_to_kg(structured_results)
                 print("Structured data added to Neo4j KG.")
@@ -151,9 +153,7 @@ class RAGAssistant:
             print("\n=== STRUCTURED INFO ===")
             print(json.dumps(structured_results, indent=2))
 
-        # Save outputs
         self.save_output(query, summary, top_pmids, structured_results)
-
         return summary, top_pmids, structured_results
 
 
@@ -169,3 +169,4 @@ if __name__ == "__main__":
 
     assistant = RAGAssistant()
     assistant.run_pipeline(args.query, top_k=args.top_k, structured=args.structured)
+
