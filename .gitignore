@@ -1,3 +1,5 @@
 __pycache_
 src/__pycache__
 data
+output
+output/rag_demo_results.txt
