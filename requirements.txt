@@ -1,5 +1,4 @@
 # Core libraries
-python>=3.10
 pandas>=2.0
 numpy>=1.25
 requests>=2.31
@@ -23,3 +22,4 @@ langchain>=0.1.0
 
 # Optional utilities
 tqdm>=4.66
+neo4j
