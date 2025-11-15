@@ -1,1 +1,274 @@
-[]
+[
+  {
+    "drug_target": "TCF7L2",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug_target": "Genes involved in inflammatory pathways (e.g., mitogen-activated protein kinase)",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug_target": "Genes involved in metabolic pathways",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug_target": "Genes involved in immune regulation",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug_target": "Regulatory elements within the TCF7L2 locus",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug_target": "Genes co-located in biological pathways (inflammatory/metabolic)",
+    "cancer": "N/A",
+    "disease": "Type 2 Diabetes",
+    "pmid": "34230558"
+  },
+  {
+    "drug": "Polygenic risk score for type 2 diabetes (4891 SNPs, P<5e-04)",
+    "target": "All-cause dementia",
+    "cancer": null,
+    "pmid": "37091584"
+  },
+  {
+    "drug": "Polygenic risk score for type 2 diabetes (4891 SNPs, P<5e-04)",
+    "target": "Mixed dementia",
+    "cancer": null,
+    "pmid": "37091584"
+  },
+  {
+    "drug": "Polygenic risk score for type 2 diabetes (4891 SNPs, P<5e-04)",
+    "target": "Vascular dementia",
+    "cancer": null,
+    "pmid": "37091584"
+  },
+  {
+    "drug": "Polygenic risk score for type 2 diabetes (4891 SNPs, P<5e-04)",
+    "target": "Alzheimer's disease",
+    "cancer": null,
+    "pmid": "37091584"
+  },
+  {
+    "drug": "PPARG",
+    "target": "Type 2 Diabetes",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "TCF7L2",
+    "target": "Type 2 Diabetes",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "KCNJ11",
+    "target": "Type 2 Diabetes",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "SLC30A8",
+    "target": "Type 2 Diabetes",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "DYX1C1",
+    "target": "Dyslexia",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "DCDC2",
+    "target": "Dyslexia",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "KIAA0319",
+    "target": "Dyslexia",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "MRPL19",
+    "target": "Dyslexia",
+    "cancer": "Type 2 Diabetes",
+    "variant": "Associated gene",
+    "pmid": "34674647"
+  },
+  {
+    "drug": "Leptin",
+    "target": "LEPR (Leptin receptor)",
+    "cancer": "Leptinoma",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "Insulin",
+    "target": "Insulin receptor",
+    "cancer": "Insulinoma",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "p53 modulator",
+    "target": "TP53 (p53 tumor suppressor gene)",
+    "cancer": "Breast Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "p53 reactivation and cancer repair (PRCR)",
+    "target": "TP53 (p53 tumor suppressor gene)",
+    "cancer": "Colon Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "MYC inhibitor",
+    "target": "MYC (Proto-oncogene)",
+    "cancer": "Lymphoma",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "CYP2D6 substrate",
+    "target": "CYP2D6 (Cytochrome P450 2D6)",
+    "cancer": "Breast Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "CYP1B1 inhibitor",
+    "target": "CYP1B1 (Cytochrome P450 1B1)",
+    "cancer": "Prostate Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "SLC2A13 modulator",
+    "target": "SLC2A13 (Glucose transporter type 13)",
+    "cancer": "Pancreatic Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "ARNT inhibitor",
+    "target": "ARNT (aryl hydrocarbon receptor nuclear translocator)",
+    "cancer": "Lung Cancer",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "APOC1/APOC2 activator",
+    "target": "APOC1/APOC2 (Apolipoproteins)",
+    "cancer": "HDL-related disorders (may relate to cancer)",
+    "pmid": "32823525"
+  },
+  {
+    "drug": "SLC33A1 inhibitor",
+    "target": "SLC33A1 (Solute carrier family 33 member A1)",
+    "cancer": "Metastasis",
+    "pmid": "32823525"
+  },
+  {
+    "drug": null,
+    "target": null,
+    "cancer": null,
+    "genetic_variant": null,
+    "disease": null,
+    "pmid": "32477452"
+  },
+  {
+    "drug": "omega-3/6 fatty acids",
+    "target": "SLC39 (including SLC39A8)",
+    "condition": "Type 2 Diabetes",
+    "relevant_phenotype": "Type 2 Diabetes",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Alzheimer's disease",
+    "relevant_phenotype": "Alzheimer's disease",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Bipolar disorder",
+    "relevant_phenotype": "Bipolar disorder",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Tourette's syndrome",
+    "relevant_phenotype": "Tourette's syndrome",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "SLC39A8",
+    "condition": "Type 2 Diabetes",
+    "relevant_phenotype": "Type 2 Diabetes",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "antihypertensive",
+    "target": "SLC39A8",
+    "condition": "Type 2 Diabetes",
+    "relevant_phenotype": "Type 2 Diabetes",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "cholesterol-lowering",
+    "target": "SLC39A8",
+    "condition": "Type 2 Diabetes",
+    "relevant_phenotype": "Type 2 Diabetes",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Alzheimer's disease",
+    "relevant_phenotype": "Alzheimer (AD)",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Bipolar disorder",
+    "relevant_phenotype": "Bipolar disorder",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "immunomodulatory",
+    "target": "HLA-DRB1",
+    "condition": "Tourette's syndrome",
+    "relevant_phenotype": "Tourette's syndrome",
+    "pmid": "38496672"
+  },
+  {
+    "drug": "omega-3/6 fatty acids",
+    "target": "SLC39A8",
+    "cancer": null,
+    "pmid": "40221434"
+  },
+  {
+    "drug": "immunomodulatory drugs",
+    "target": "HLA-DRB1",
+    "cancer": null,
+    "pmid": "40221434"
+  }
+]
