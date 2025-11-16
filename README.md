@@ -1,28 +1,30 @@
-# RAG-Powered Gene Discovery Assistant
+# RAG-Powered Gene Discovery Assistant (`ragbio`)
 
-A generative AI tool for biomedical knowledge discovery using **Hugging Face embeddings** and **Ollama LLMs (DeepSeek / LLaMA3)**.  
+A generative AI tool for biomedical knowledge discovery using **Hugging Face embeddings** and **Ollama LLMs (DeepSeek / LLaMA3)**.
 This project integrates **retrieval-augmented generation (RAG)** with PubMed literature and gene annotation data to summarize gene–disease relationships.
+Now packaged as a **reusable Python package**, it can be imported and used in multiple bioinformatics projects.
 
 ---
 
 ## Overview
+
 The RAG-powered assistant enables:
 
-- Semantic search over PubMed abstracts and gene annotations.
-- Summarization of complex biomedical information.
-- Citation tracking with PubMed IDs.
-- Modular and reusable pipeline for gene-disease exploration.
+* Semantic search over PubMed abstracts and gene annotations.
+* Summarization of complex biomedical information.
+* Citation tracking with PubMed IDs.
+* Modular and reusable pipeline for gene-disease exploration.
 
 **Example queries:**
-- "Which genes are linked to oxidative stress in Alzheimer’s disease?"
-- "Summarize recent findings about TP53 variants in cancer."
+
+* "Which genes are linked to oxidative stress in Alzheimer’s disease?"
+* "Summarize recent findings about TP53 variants in cancer."
 
 ---
 
 ## Architecture
 
 ```
-
 User Query
 │
 ▼
@@ -36,18 +38,19 @@ Ollama LLM (DeepSeek / LLaMA3)
 │
 ▼
 Summarized Biomedical Answer + Citations
-
-````
+```
 
 ---
 
 ## Installation
 
+Clone and install as a package:
+
 ```bash
 git clone https://github.com/<your-username>/rag-gene-discovery-assistant.git
 cd rag-gene-discovery-assistant
-pip install -r requirements.txt
-````
+pip install -e .
+```
 
 **Example `requirements.txt`**
 
@@ -61,28 +64,35 @@ requests
 sqlite-utils
 ollama
 pandas
+beautifulsoup4
 ```
 
 ---
 
 ## Usage
 
-#### 1. Load Data and Build Embeddings
+### 1. Fetch PubMed Data
 
-```bash
-python src/data_loader.py
-python src/embedding_engine.py
+```python
+from ragbio.utils.data_loader import main as fetch_pubmed_data
+
+# Download abstracts and metadata
+fetch_pubmed_data()
 ```
 
-#### 2. Run RAG Pipeline
+### 2. Run RAG Query
 
-```bash
-python src/rag_pipeline.py --query "genes linked to Parkinson's disease"
+```python
+from ragbio import run_rag_query
+
+result = run_rag_query("genes linked to Parkinson's disease")
+print(result["summary"])
+print(result["citations"])
 ```
 
-#### 3. Explore in Notebook
+### 3. Optional: Explore in Notebook
 
-Open `notebooks/RAG_GeneDiscovery_Assistant.ipynb` to see example queries and outputs.
+Open `notebooks/RAG_GeneDiscovery_Assistant.ipynb` to see example queries, visualizations, and outputs.
 
 ---
 
@@ -104,6 +114,7 @@ Open `notebooks/RAG_GeneDiscovery_Assistant.ipynb` to see example queries and ou
 * Compare **DeepSeek/LLaMA3** with **BioGPT** outputs.
 * Integrate **Neo4j** for gene–disease–drug knowledge graph visualization.
 * Fine-tune LLMs on curated variant interpretation reports for improved clinical relevance.
+* Extend package API for **direct integration in Django, FastAPI, and Streamlit apps**.
 
 ---
 
@@ -111,3 +122,4 @@ Open `notebooks/RAG_GeneDiscovery_Assistant.ipynb` to see example queries and ou
 
 **Manish Kumar**
 Senior Bioinformatics Software Developer | AI Researcher | Data Science Enthusiast
+
