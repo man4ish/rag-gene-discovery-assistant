@@ -8,6 +8,7 @@ Purpose: RAG Pipeline for Gene Discovery + Structured Drug-Target-Cancer KG
 """
 
 import os
+import re
 import json
 import numpy as np
 import argparse
@@ -219,18 +220,25 @@ class RAGAssistant:
     # Output Saving (Unchanged)
     # ---------------------------
     def save_output(self, query, summary, top_pmids, structured_results=None):
-        # ... (same as original)
+        # Save summary and PMIDs (optional, same as before)
         summary_file = os.path.join(self.output_dir, "rag_demo_results.txt")
         with open(summary_file, "a", encoding="utf-8") as f:
             f.write(f"Query: {query}\n")
             f.write(f"PMIDs: {', '.join(top_pmids)}\n")
             f.write(f"Summary: {summary}\n\n")
 
-        structured_file = os.path.join(self.output_dir, "sample_answers.json")
-        with open(structured_file, "w", encoding="utf-8") as f:
-            json.dump(structured_results if structured_results else [], f, indent=2)
+        # ---------------------------
+        # New: Save JSON per query
+        # ---------------------------
+        if structured_results:
+            # Derive safe filename from query
+            query_var = query.lower()
+            query_var = re.sub(r'\W+', '_', query_var)  # Replace non-alphanumeric with underscore
+            json_file = os.path.join(self.output_dir, f"{query_var}_output.json")
 
-        print(f"Results saved to: {self.output_dir}")
+            with open(json_file, "w", encoding="utf-8") as f:
+                json.dump(structured_results, f, indent=2)
+            print(f"Structured results saved to: {json_file}")
 
     # ---------------------------
     # Full Pipeline (Adapted)

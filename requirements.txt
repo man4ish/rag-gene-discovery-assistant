@@ -23,3 +23,4 @@ langchain>=0.1.0
 # Optional utilities
 tqdm>=4.66
 neo4j
+langchain_community

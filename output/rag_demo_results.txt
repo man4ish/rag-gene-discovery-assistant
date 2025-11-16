@@ -110,3 +110,74 @@ Summary: Okay, here is a list of some of the most well-established and significa
 
 This list represents some of the strongest and most consistently replicated genetic associations with Type 2 Diabetes risk. Research is ongoing, and more variants are likely to be discovered.
 
+Query: genes linked to Parkinson's disease
+PMIDs: 32864809, 32036337, 37804111, 37396535, 37222843, 35821405, 33981200, 38254673, 37865667, 34142529
+Summary: Based on the provided context, the following genes are linked to Parkinson's disease:
+
+- SNCA (alpha-synuclein)
+- GBA (glucocerebrosylceramidase)
+- LRRK2 (leucine-rich glioma-inactivated 1 2)
+- VPS35 (vacuolar protein sorting 35 homolog)
+- PINK1 (PTHR13279)
+- DJ-1 (DNAJ subfamily B member 1)
+- PRKN (parkin RBR E3 ubiquitin protein ligase)
+- ATP10B (ATPase type 10B)
+- TFG (TGF-beta induced 16 homolog)
+- CHMP1A (charged multivesicular body protein 1A)
+- GIPC1 (GIPC EBP-related 1)
+- KIF21B (kinesin heavy chain 21B)
+- KIF24 (kinesin heavy chain 24)
+- SLC25A39 (solute carrier family 25 member 39)
+- SPTBN1 (spinophilin)
+- TOMM22 (translocase mitochondrial inner membrane 22)
+- ANK2 (ankyrin 2)
+- DNAH1 (dynein heavy chain 1)
+- STAB1 (stab1)
+- NOTCH2NLC (Notch2 neuregulin receptor-like)
+- UQCRC1 (ubiquinol-cytochrome c oxidoreductase core protein 1)
+- DNAH5 (dynein heavy chain 5)
+- GPNMB (GPNMB)
+- CD38 (CD38 molecule)
+- DGKQ (diacylglycerol kinase gamma)
+- CTSB (cathepsin B)
+- ARSA (arsenite resistance-associated)
+- SEC23IP (SEC23 interactor)
+- CD84 (CD84 molecule)
+- ENTPD1 (ectonucleoside triphosphate diphosphohydrolase 1)
+- FCGR2B (FC gamma receptor II B)
+- BAG3 (BAG3 co-chaperone)
+- FCGR2A (FC gamma receptor II A)
+
+These genes are associated with Parkinson's disease through various studies, including genome-wide association studies (GWAS), functional analyses, and databases like Gene4PD.
+
+Query: drugs targeting BRCA1 in breast cancer
+PMIDs: 41193446, 41148817, 41155174, 41208884, 41207815, 41185933, 41157256, 41213388, 41158759, 41155531
+Summary: Based on the provided text, here are the drugs and strategies targeting BRCA1 in breast cancer:
+
+1.  **PARP Inhibitors (PARPi):** These drugs target the DNA repair pathway homologous recombination (HR), which is deficient in cells with BRCA1 mutations. By inhibiting PARP, they cause synthetic lethality in BRCA1-mutant cells, as these cells cannot effectively repair DNA damage (like double-strand breaks) without functional BRCA1. Examples mentioned include Olaparib, Niraparib (Niraparib is mentioned in the OlympiA trial context), Talazoparib, and earlier ones like Niraparib (though the specific name Niraparib appears twice, it's the same drug). The concept of synthetic lethality is key here.
+
+2.  **CDK4/6 Inhibitors:** Drugs like Abemaciclib target the cell cycle machinery. The text states that Abemaciclib (and other CDK4/6 inhibitors) can be effective in BRCA1-mutant Triple Negative Breast Cancer (TNBC) cell lines, suggesting a specific efficacy in this subtype.
+
+3.  **Immunotherapy (Combination with other modalities):** While not directly targeting BRCA1, the deficiency can sometimes be associated with immune response. The text mentions using anti-PD-1 blockade combined with radiation therapy for BRCA1-associated metastatic breast cancer (MBC), indicating a treatment strategy that leverages the tumor microenvironment potentially altered by HRD (often linked to BRCA mutations).
+
+4.  **Combination Therapies:**
+    *   **PARP Inhibitors + Proton Pump Inhibitors (PPIs):** This combination works by inhibiting FASN (via PPIs like Lansoprazole) which contributes to PARPi resistance, thereby restoring sensitivity to PARPi-induced synthetic lethality in both BRCA1-mutant and wild-type TNBC cells.
+    *   **XPO1 Inhibitor (Selinexor) + Parthenolide:** This combination was computationally predicted and experimentally tested. While the primary target is XPO1 (exportin), its effects on transcription and possibly DNA repair pathways might contribute to efficacy in TNBC, including BRCA1-mutant cells.
+
+**In summary:** The text highlights PARP inhibitors as the primary class of drugs directly leveraging the BRCA1 deficiency (synthetic lethality). CDK4/6 inhibitors show specific efficacy in BRCA1-mutant TNBC. Combinations involving PARP inhibitors (with PPIs) or other agents like Selinexor are also discussed as strategies relevant to BRCA1 status or deficiency.
+
+Query: key metabolic pathways in type 2 diabetes
+PMIDs: 32823525, 34674647, 32714075, 41203350, 39798693, 40042145, 40886004, 38712748, 34230558, 40766152
+Summary: Based on the provided context, the key metabolic pathways in type 2 diabetes (T2DM) include:
+
+1.  **Insulin Receptor Signaling:** A central pathway affected in T2DM, leading to insulin resistance.
+2.  **Type II Diabetes Mellitus Signaling:** This likely encompasses various signaling cascades disrupted in T2DM.
+3.  **Mitochondrial Dysfunction:** Impaired mitochondrial function, particularly in energy metabolism, is a key feature.
+4.  **Oxidative Phosphorylation:** A core process in cellular respiration that is often impaired in T2DM.
+5.  **Lipid Metabolism:** Dysregulation of lipid synthesis, breakdown, and the effects of lipid products are implicated in T2DM.
+6.  **Pentose Phosphate Pathway:** Specifically mentioned with reference to transketolase and its role in metabolic dysfunction associated with T2DM.
+7.  **Glutathione Metabolism:** Part of the broader pathway analysis showing altered metabolism in T2DM.
+8.  **Fatty Acid Degradation:** A pathway significantly influenced in T2DM, as per the multi-omics study.
+
+These pathways highlight the complex metabolic dysregulation underlying T2DM, involving insulin signaling, energy production (mitochondria, oxidative phosphorylation), lipid handling, and antioxidant pathways.
+
