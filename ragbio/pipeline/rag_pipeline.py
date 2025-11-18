@@ -34,7 +34,7 @@ from config import (
     MODEL_NAME,   # Embedding model from config
     TOP_K,
 )
-from src.structured_drug_kg import add_structured_data_to_kg
+from knowledge_graph.structured_drug_kg import add_structured_data_to_kg
 
 
 # ------------------------------------------------------------
