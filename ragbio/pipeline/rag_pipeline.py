@@ -27,7 +27,7 @@ from langchain_core.retrievers import BaseRetriever
 from pydantic import Field
 
 # Local Imports
-from config import (
+from ragbio.config import (
     ABSTRACT_FOLDER,
     INDEX_FILE,
     ID_MAP_FILE,

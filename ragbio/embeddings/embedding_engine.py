@@ -18,7 +18,7 @@ import faiss
 import numpy as np
 import ollama
 from tqdm import tqdm
-import config
+from ragbio import config
 
 
 # ==========================================

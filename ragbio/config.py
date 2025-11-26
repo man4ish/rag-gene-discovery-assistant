@@ -1,5 +1,8 @@
 import os
 
+WORKSPACE_DIR = "/workspace"
+os.makedirs(WORKSPACE_DIR, exist_ok=True)
+
 # Base path – use environment variable if available (for Docker mounting)
 BASE_PATH = os.getenv("PUBMED_BASE_PATH", "/workspace/data/PubMed")
 

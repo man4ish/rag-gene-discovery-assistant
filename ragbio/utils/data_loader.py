@@ -13,7 +13,8 @@ import requests
 from bs4 import BeautifulSoup
 from Bio import Entrez
 from urllib.error import HTTPError, URLError
-import config
+from ragbio import config
+
 
 # ==========================================
 # Configuration
