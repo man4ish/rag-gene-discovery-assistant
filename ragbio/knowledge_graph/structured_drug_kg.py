@@ -1,8 +1,55 @@
+#!/usr/bin/pyhton3
+
 """
-Module: structured_drug_kg.py
-Purpose: Build a drug-target-cancer knowledge graph from structured data.
-Dependencies: neo4j, json
+structured_drug_kg.py
+
+Neo4j Knowledge Graph Utilities for Structured Drug-Target-Cancer Data.
+
+This module provides functions to:
+1. Connect to a Neo4j database.
+2. Add drugs, targets, and cancer types as nodes.
+3. Create relationships:
+   - Drug TARGETS Target (with optional mechanism and PMID)
+   - Drug USED_FOR Cancer (with PMID reference)
+4. Query drugs targeting a specific protein in a given cancer type.
+
+Functions:
+- create_kg_entry(tx, drug, target, cancer, pmid, mechanism=""):
+    Adds nodes and relationships for a single drug-target-cancer entry in a transaction.
+
+- add_structured_data_to_kg(structured_data: list):
+    Adds multiple structured drug-target-cancer entries to the Neo4j knowledge graph.
+
+- query_drugs_by_target(target_name: str, cancer_name: str) -> list:
+    Returns a list of drugs targeting a specified protein in a given cancer type.
+
+Example Usage:
+    data = [
+        {
+            "drug": "Trastuzumab",
+            "targets": [
+                {"target": "HER2", "cancer": "Breast Cancer", "mechanism": "Inhibits HER2 signaling"}
+            ],
+            "pmid": "12345678"
+        }
+    ]
+    
+    add_structured_data_to_kg(data)
+    drugs = query_drugs_by_target("HER2", "Breast Cancer")
+    print(drugs)
+
+Configuration:
+- NEO4J_URI      : Bolt URI of the Neo4j instance (default: bolt://localhost:7687)
+- NEO4J_USER     : Neo4j username
+- NEO4J_PASSWORD : Neo4j password
+
+Dependencies:
+- neo4j Python driver
+
+Author:
+    Manish Kumar
 """
+
 
 from neo4j import GraphDatabase
 

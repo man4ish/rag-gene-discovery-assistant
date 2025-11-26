@@ -1,11 +1,47 @@
+#!/usr/bin/pyhton3
+
 """
-Module: rag_pipeline.py (LangChain Version)
-Purpose: RAG Pipeline for Gene Discovery + Structured Drug-Target-Cancer KG
-------------------------------------------------------------------
-- Retrieves top PubMed abstracts using FAISS via a custom LangChain Retriever
-- Generates answers using an Ollama LLM
-- Supports optional structured extraction and Neo4j KG population
+rag_pipeline.py
+
+RAG (Retrieval-Augmented Generation) Pipeline for Biomedical Literature:
+- Retrieves relevant PubMed abstracts using a FAISS vector index.
+- Generates natural language summaries using LangChain LLMs (Ollama).
+- Optionally extracts structured drug-target-disease information.
+- Integrates structured results into a Neo4j knowledge graph.
+
+Features:
+1. FAISSPMIDRetriever: Custom LangChain retriever to load FAISS index and return top-K documents.
+2. RAGAssistant: High-level class to run the RAG pipeline:
+   - Load FAISS index and PMID map
+   - Retrieve top-K relevant abstracts
+   - Generate summary via LangChain RAG chain
+   - Optionally perform structured extraction and update KG
+3. Robust JSON handling for abstracts and metadata.
+4. CLI support for ad-hoc queries with top-K and structured extraction options.
+
+Configuration:
+- Uses environment and config settings from `ragbio.config`:
+    - ABSTRACT_FOLDER: Folder storing abstract JSONs
+    - INDEX_FILE: FAISS index file path
+    - ID_MAP_FILE: Mapping of FAISS indices to PMIDs
+    - MODEL_NAME: Embedding model for Ollama embeddings
+    - TOP_K: Default number of abstracts to retrieve
+
+Dependencies:
+- numpy, faiss
+- LangChain (llms, embeddings, documents, runnables, prompts, retrievers)
+- pydantic
+- ragbio.config
+- ragbio.knowledge_graph.structured_drug_kg
+- json, os, argparse, re, operator
+
+Usage:
+    python rag_pipeline.py --query "BRCA1 drug interactions" --top_k 10 --structured
+
+Author:
+    Manish Kumar
 """
+
 
 import os
 import re
@@ -27,14 +63,14 @@ from langchain_core.retrievers import BaseRetriever
 from pydantic import Field
 
 # Local Imports
-from config import (
+from ragbio.config import (
     ABSTRACT_FOLDER,
     INDEX_FILE,
     ID_MAP_FILE,
     MODEL_NAME,   # Embedding model from config
     TOP_K,
 )
-from src.structured_drug_kg import add_structured_data_to_kg
+from ragbio.knowledge_graph.structured_drug_kg import add_structured_data_to_kg
 
 
 # ------------------------------------------------------------

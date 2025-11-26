@@ -1,10 +1,44 @@
+#!/usr/bin/env python3
+
 """
-data_loader.py
----------------
-Fetch PubMed abstracts, metadata, and PDFs.
-Stores data in structured folders defined in config.py.
-Supports large-scale batch downloads with auto-resume.
+pubmed_fetcher.py
+
+Fetch abstracts, metadata, and open-access PDFs from PubMed for a given search term.
+The script uses Biopython's Entrez API and optionally scrapes PMC for PDFs. 
+It organizes downloaded content into structured folders and JSON files for downstream processing.
+
+Features:
+- Configurable search term, email, batch size, and starting index via environment variables.
+- Automatic creation of folders for abstracts, metadata, and PDFs.
+- Handles retries for PubMed API requests and resumes from previously processed PMIDs.
+- Fetches article title, abstract, authors, and optionally downloads open-access PDFs from PMC.
+- Saves each record as JSON for easy downstream integration (e.g., RAG pipelines).
+
+Configuration:
+- Environment Variables:
+    - NCBI_EMAIL      : Email used for NCBI Entrez API (default: "mandecent.gupta@gmail.com")
+    - PUBMED_SEARCH   : PubMed search term (default: "cancer AND (drug OR therapy OR treatment)")
+    - PUBMED_RETMAX   : Number of records per batch (default: 1000)
+    - PUBMED_RETSTART : Starting index for fetching records (default: 0)
+- Uses folder paths defined in `ragbio.config`:
+    - ABSTRACT_FOLDER : stores JSON abstracts
+    - METADATA_FOLDER : stores JSON metadata
+    - PDF_FOLDER      : stores PDFs (if available)
+
+Dependencies:
+- biopython (Entrez)
+- requests
+- beautifulsoup4
+- ragbio.config
+- json, os, time, urllib
+
+Usage:
+    python pubmed_fetcher.py
+
+Author:
+    Manish Kumar
 """
+
 
 import os
 import json
@@ -13,7 +47,8 @@ import requests
 from bs4 import BeautifulSoup
 from Bio import Entrez
 from urllib.error import HTTPError, URLError
-import config
+from ragbio import config
+
 
 # ==========================================
 # Configuration
