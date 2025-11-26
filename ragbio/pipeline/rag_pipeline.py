@@ -34,7 +34,7 @@ from ragbio.config import (
     MODEL_NAME,   # Embedding model from config
     TOP_K,
 )
-from knowledge_graph.structured_drug_kg import add_structured_data_to_kg
+from ragbio.knowledge_graph.structured_drug_kg import add_structured_data_to_kg
 
 
 # ------------------------------------------------------------

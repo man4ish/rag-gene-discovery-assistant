@@ -24,3 +24,4 @@ langchain>=0.1.0
 tqdm>=4.66
 neo4j
 langchain_community
+py2neo
