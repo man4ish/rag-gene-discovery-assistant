@@ -1,14 +1,45 @@
+#!/usr/bin/pyhton3
 """
 embedding_engine.py
--------------------
-Generates embeddings for PubMed abstracts using Ollama (DeepSeek/LLaMA3).
-Stores FAISS index and PMID mapping in external storage.
 
-Enhancements:
-- GPU-aware FAISS index creation.
-- Resumable embedding (skip already processed PMIDs).
-- Graceful handling of Ollama timeouts/errors.
-- Progress save checkpoints every N embeddings.
+Pipeline to generate vector embeddings from PubMed abstracts using Ollama,
+and build a FAISS similarity index for retrieval in RAG workflows.
+
+This module performs the following steps:
+1. Load abstracts from JSON files (skips empty abstracts).
+2. Generate embeddings for each abstract using the Ollama embedding model.
+   - Supports checkpointing to resume progress.
+   - Handles API failures gracefully by inserting zero vectors.
+3. Build a FAISS index (inner product) on the embeddings.
+   - Supports GPU acceleration if available and configured.
+   - Normalizes embeddings to unit length for cosine similarity.
+4. Save the FAISS index and corresponding PMID map for retrieval.
+
+Configuration:
+- Uses `ragbio.config` for paths, model parameters, and GPU usage:
+    - ABSTRACT_FOLDER : Folder containing abstract JSON files
+    - INDEX_FOLDER    : Folder to save FAISS index and mapping
+    - INDEX_FILE      : File path to save FAISS index
+    - ID_MAP_FILE     : JSON file mapping vector indices to PMIDs
+    - MODEL_NAME      : Embedding model (Ollama)
+    - USE_GPU         : Whether to use GPU for FAISS
+
+Checkpointing:
+- Optional JSON checkpoint allows resuming embedding generation.
+- Checkpoints are saved every 500 abstracts to avoid API overload.
+
+Dependencies:
+- numpy, faiss
+- ollama
+- tqdm
+- ragbio.config
+- json, os, time
+
+Usage:
+    python build_faiss_index.py
+
+Author:
+    Manish Kumar
 """
 
 import os

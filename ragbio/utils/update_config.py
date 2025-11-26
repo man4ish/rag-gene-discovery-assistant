@@ -1,4 +1,34 @@
 #!/usr/bin/env python3
+
+"""
+update_config.py
+
+Script to permanently update configuration settings in the `config.py` 
+file for the RAG (Retrieval-Augmented Generation) pipeline.
+
+Functionality:
+- Updates the following configuration variables in `config.py`:
+    - WORKSPACE_DIR : Path to the main workspace directory
+    - BASE_PATH     : Automatically set to WORKSPACE_DIR/data/PubMed
+    - TOP_K         : Number of top abstracts to retrieve
+    - USE_GPU       : Boolean flag to use GPU for embeddings
+
+Usage:
+    python update_config.py --workspace /path/to/workspace [--top_k 10] [--use_gpu true|false]
+
+Arguments:
+- --workspace : Required. Path to the workspace directory.
+- --top_k     : Optional. Number of top abstracts to retrieve. Default is 10.
+- --use_gpu   : Optional. Whether to use GPU for embeddings. Default is true.
+
+Notes:
+- The script updates the config.py file located one directory above this script.
+- If config.py is missing, the script raises a FileNotFoundError.
+
+Author:
+    Manish Kumar
+"""
+
 import os
 import argparse
 import re
